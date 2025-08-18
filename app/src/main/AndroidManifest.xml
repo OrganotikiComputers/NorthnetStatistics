@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <application
+        tools:replace="android:allowBackup"
+        android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/logo_stats"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name="organotiki.mobile.NorthnetStatistics.MyApplication">
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.LogInScreen"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.MainScreen"
+            android:label="@string/mobileStreet">
+        </activity>
+
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.Sync"
+            android:label="@string/sync"
+            android:parentActivityName="organotiki.mobile.NorthnetStatistics.MainScreen"
+            android:windowSoftInputMode="stateHidden"
+           >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="organotiki.mobile.NorthnetStatistics.MainScreen" />
+        </activity>
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.StatsKarfwta"
+            android:label="@string/offlinestats"
+            android:screenOrientation="landscape"
+            android:parentActivityName="organotiki.mobile.NorthnetStatistics.MainScreen"
+            android:windowSoftInputMode="stateHidden"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="organotiki.mobile.NorthnetStatistics.MainScreen" />
+        </activity>
+        <activity
+            android:name="organotiki.mobile.NorthnetStatistics.OfflineStats"
+            android:label="@string/offlinestats"
+            android:parentActivityName="organotiki.mobile.NorthnetStatistics.MainScreen"
+            android:windowSoftInputMode="stateHidden"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="organotiki.mobile.NorthnetStatistics.MainScreen" />
+        </activity>
+
+
+
+    </application>
+
+</manifest>

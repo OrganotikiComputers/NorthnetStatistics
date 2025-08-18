@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="organotiki.mobile.NorthnetStatistics.CustomerReport">
+
+
+  <!--  <item
+        android:id="@+id/menuItem_online_report"
+        android:icon="@drawable/ic_description_white_48dp"
+        android:title="@string/onlineReport"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />-->
+
+    <item
+        android:id="@+id/menuItem_additional_customer_details"
+        android:icon="@drawable/ic_tab_white_48dp"
+        android:title="@string/additionalCustomerDetails"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+
+ <!--   <item
+        android:id="@+id/menuItem_change_customer_details"
+        android:icon="@drawable/ic_table_edit_white_48dp"
+        android:title="@string/changeCustomerDetails"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom" />-->
+
+    <item
+        android:id="@+id/menuItem_search_customer"
+        android:icon="@drawable/ic_account_search_white_48dp"
+        android:title="@string/searchCustomer"
+        android:orderInCategory="300"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="organotiki.mobile.NorthnetStatistics.Items"
+    android:id="@+id/drawer_categories">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/itemsBar"
+            layout="@layout/main_screen_bar" />
+
+        <fragment
+            android:id="@+id/fItems"
+            android:name="organotiki.mobile.NorthnetStatistics.ItemGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/itemsBar"
+            tools:layout="@layout/fragment_item_grid"
+            android:layout_above="@id/relativeLayout_footer"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            >
+            <RelativeLayout
+                android:id="@+id/relativeLayout_paging"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimary"
+                >
+                <ImageButton
+                    android:id="@+id/imageButton_previousPage"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/baseline_keyboard_arrow_left_white_48"
+                    android:contentDescription="@string/previousPage"
+                    />
+
+                <ImageButton
+                    android:id="@+id/imageButton_nextPage"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_chevron_right_white_48dp"
+                    android:layout_toEndOf="@id/imageButton_previousPage"
+                    android:contentDescription="@string/nextPage"
+                    />
+                <TextView
+                    android:id="@+id/textView_Page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/page"
+                    android:gravity="center_vertical"
+                    android:layout_toStartOf="@id/spinner_page"
+                    android:layout_alignBaseline="@id/spinner_page"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorAccent"
+                    />
+                <Spinner
+                    android:id="@+id/spinner_page"
+                    android:layout_width="120dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_total"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/relativeLayout_paging"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:textAlignment="viewEnd"
+                    android:textSize="12sp"
+                    android:singleLine="true" />
+                <TextView
+                    android:id="@+id/textView_total2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:textAlignment="viewEnd"
+                    android:textSize="12sp"
+                    android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <fragment
+        android:id="@+id/fCategories"
+        android:name="organotiki.mobile.NorthnetStatistics.Categories"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/itemsBar"
+        android:layout_gravity="start"
+        tools:layout="@layout/fragment_categories" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

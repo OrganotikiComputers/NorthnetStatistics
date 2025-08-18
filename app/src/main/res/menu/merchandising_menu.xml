@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="organotiki.mobile.NorthnetStatistics.Merchandising">
+
+
+    <item
+        android:id="@+id/searchCustomer"
+        android:icon="@drawable/ic_account_search_white_48dp"
+        android:title="@string/searchCustomer"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/next"
+        android:icon="@drawable/ic_chevron_right_white_48dp"
+        android:title="@string/next"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom" />
+</menu>

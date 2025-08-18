@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <ImageButton
+    android:id="@+id/close_dialog"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_weight="10"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_margin="16dp"
+    android:src="@drawable/ic_close" />
+
+
+  <!--  <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageSlide"
+        android:minWidth="500dp"
+        android:minHeight="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+
+        android:src="@mipmap/ic_launcher" />-->
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageSlide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/close_dialog"
+        android:layout_above="@+id/llBottom"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <RelativeLayout
+        android:id="@+id/llBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp">
+        <Button
+            android:id="@+id/previousbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Προηγούμενη"
+            android:layout_alignParentStart="true"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/nextbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Επόμενη"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</RelativeLayout>

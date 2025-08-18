@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/syncBar"
+        layout="@layout/sync_bar"
+        android:baselineAligned="false" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/syncBar">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <RelativeLayout
+                android:id="@+id/relativeLayout_IPs"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/checkBox_syncImages"
+                >
+
+
+                <TextView
+                    android:id="@+id/textView_deviceID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView_local_IP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/editText_local_IP"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/localIpAddress"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18.0sp" />
+
+                <EditText
+                    android:id="@+id/editText_local_IP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_deviceID"
+                    android:textAllCaps="false"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20.0dip"
+                    android:layout_toEndOf="@+id/textView_local_IP"
+                    android:inputType="textUri"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/textView_online_IP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/editText_online_IP"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/onlineIpAddress"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18.0sp" />
+
+                <EditText
+                    android:id="@+id/editText_online_IP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_local_IP"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/textView_online_IP"
+                    android:inputType="textUri"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_online_IP"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textSize="18.0sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/button_syncCustomerItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="false"
+                android:layout_below="@+id/checkBox_syncImages"
+
+                android:text="@string/start"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_syncCustomerItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sync"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_syncImages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_syncCustomerItem"
+                android:text="@string/syncImage"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox_syncImages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView_syncImages"
+                android:layout_toEndOf="@+id/textView_syncImages"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

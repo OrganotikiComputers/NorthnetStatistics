@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/tableLayout_items"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/linearLayout_items1"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/textview_description"
+                    android:layout_width="200.0dip"
+                    android:layout_height="20dp"
+                    android:layout_weight="1.0"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:background="@drawable/back"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/description"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/linearLayout_items2"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="horizontal"
+                    android:layout_width="0.0dip"
+                    android:layout_height="80dp"
+                    android:layout_weight="1.0"
+                    >
+                    <ImageView
+                        android:id="@+id/imageView_image"
+                        android:layout_width="100.0dip"
+                        android:layout_height="50.0dip"
+                        android:layout_weight="0.0"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:orientation="vertical"
+                        android:layout_width="0.0dip"
+                        android:layout_height="80dp"
+                        android:layout_weight="1.0"
+                        >
+                        <HorizontalScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0">
+
+
+                            <TextView
+                                android:id="@+id/itemsalesremark"
+                                android:layout_width="0.0dip"
+                                android:layout_height="25.0dip"
+                                android:maxLines="1"
+                                android:text="N/A"
+                                android:textColor="@android:color/white" />
+                        </HorizontalScrollView>
+                        <HorizontalScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0">
+
+
+                            <TextView
+                                android:id="@+id/code"
+                                android:layout_width="0.0dip"
+                                android:layout_height="25.0dip"
+                                android:maxLines="1"
+                                android:text="N/A"
+                                android:textColor="@android:color/white" />
+                        </HorizontalScrollView>
+                        <HorizontalScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0">
+                            <TextView
+                                android:id="@+id/description"
+                                android:layout_width="170dp"
+                                android:layout_weight="1.0"
+                                android:layout_height="25.0dip"
+                                android:maxLines="1"
+                                android:text="N/A"
+                                android:textColor="@android:color/white" />
+                        </HorizontalScrollView>
+                        <HorizontalScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0">
+                            <TextView
+                                android:id="@+id/page"
+                                android:layout_width="170dp"
+                                android:layout_weight="1.0"
+                                android:layout_height="25.0dip"
+                                android:maxLines="1"
+                                android:text="N/A"
+                                android:textColor="@android:color/white" />
+                        </HorizontalScrollView>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imageButton_lotdetails"
+                        android:layout_width="30dp"
+                        android:ellipsize="end"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/lot_icon24dp"
+                        />
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imageButton_details"
+                        android:layout_width="30dp"
+                        android:ellipsize="end"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_details"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/linearLayout_invoice_info3"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_quantityB"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView_header_quantityB"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/quantityB"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_quantitySpecial"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView_header_quantitySpecial"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/quantityA"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView_header_quantity"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/quantity"
+                    android:maxLines="1"
+                    android:background="@drawable/back"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+                <TextView
+                    android:id="@+id/textView_header_price"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:background="@drawable/back"
+                    android:text="@string/price"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+                <TextView
+                    android:id="@+id/textView_header_discount"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:background="@drawable/back"
+                    android:text="@string/discount"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+            </TableRow>
+            <TableRow
+                android:id="@+id/linearLayout_invoice_info4"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_quantityB"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/editText_quantityB"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:ems="10"
+                        android:gravity="center_horizontal|center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:selectAllOnFocus="true"/>
+
+                    <TextView
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="#303030" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_quantitySpecial"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/editText_quantitySpecial"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:ems="10"
+                        android:gravity="center_horizontal|center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:selectAllOnFocus="true"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/quantity"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:gravity="center_horizontal|center"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:selectAllOnFocus="true"/>
+                <EditText
+                    android:id="@+id/price"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:gravity="center_horizontal|center"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:selectAllOnFocus="true"/>
+
+                <EditText
+                    android:id="@+id/discount"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:gravity="center_horizontal|center"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:selectAllOnFocus="true"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/linearLayout_invoice_info5"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_warehouse_balance"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/column_header4warehouse"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/warehouse"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_warehouse2_balance"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/column_header5warehouse2"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/warehouse"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_discountA"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/column_header9"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/discountA"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_header_efk"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/column_header9"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:text="@string/surchargesvalue"
+                        android:background="@drawable/back"
+                        android:singleLine="true"
+                        android:textAlignment="gravity"
+                        android:textSize="12.0sp" />
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:id="@+id/column_header6"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:background="@drawable/back"
+                    android:text="@string/value"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+                <TextView
+                    android:id="@+id/column_header7"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:background="@drawable/back"
+                    android:text="@string/payable"
+                    android:singleLine="true"
+                    android:textAlignment="gravity"
+                    android:textSize="12.0sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/linearLayout_invoice_info6"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_warehouse_balance"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/edtx_warehouse"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:ems="10"
+                        android:gravity="center_horizontal|center"
+                        android:inputType="numberDecimal"
+                        android:focusable="false"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="14sp"
+                        android:selectAllOnFocus="true"/>
+
+                    <TextView
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="#303030" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_warehouse2_balance"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/edtx_warehouse2"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:focusable="false"
+                        android:ems="10"
+                        android:textColor="@color/colorBlue"
+                        android:gravity="center_horizontal|center"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp"
+                        android:selectAllOnFocus="true"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_discountA"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <EditText
+                        android:id="@+id/editText_discountA"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:ems="10"
+                        android:gravity="center_horizontal|center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:selectAllOnFocus="true"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linearLayout_efk"
+                    android:layout_height="match_parent"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:id="@+id/efk"
+                        android:layout_width="0.0dip"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:ems="10"
+                        android:gravity="end"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/value"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/payable"
+                    android:layout_width="0.0dip"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp">
+
+                </TextView>
+
+            </TableRow>
+
+
+        </TableLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tableLayout_items"
+            android:background="@color/white" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="organotiki.mobile.NorthnetStatistics.CheckOut">
+    <item
+        android:id="@+id/detail_check_out"
+        android:icon="@drawable/ic_tab_white_48dp"
+        android:title="@string/orderdetail"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/print_check_out"
+        android:icon="@drawable/baseline_print_white_48dp"
+        android:title="@string/print"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cancel_check_out"
+        android:icon="@drawable/ic_cancel_red_48dp"
+        android:title="@string/cancel"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+<!--    <item
+        android:id="@+id/print_cancel"
+        android:icon="@drawable/baseline_print_red_48dp"
+        android:title="@string/cancel_print"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />-->
+    <item
+        android:id="@+id/complete_check_out"
+        android:icon="@drawable/ic_check_white_48dp"
+        android:title="@string/complete"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+</menu>

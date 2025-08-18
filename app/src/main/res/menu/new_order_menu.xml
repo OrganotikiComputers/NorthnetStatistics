@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="organotiki.mobile.NorthnetStatistics.NewOrder">
+
+    <item
+        android:id="@+id/createCustomer"
+        android:icon="@drawable/ic_person_add_white_48dp"
+        android:title="@string/createCustomer"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/searchCustomer"
+        android:icon="@drawable/ic_account_search_white_48dp"
+        android:title="@string/searchCustomer"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/searchSupplier"
+        android:icon="@drawable/ic_account_search_white_48dp"
+        android:title="@string/searchSupplier"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/newItemCustomer"
+        android:icon="@drawable/ic_shopping_basket_white_48dp"
+        android:title="@string/newItem"
+        android:orderInCategory="100"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/newItem"
+        android:icon="@drawable/ic_add_shopping_cart_white_48dp"
+        android:title="@string/newItem"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/next"
+        android:icon="@drawable/ic_chevron_right_white_48dp"
+        android:title="@string/next"
+        android:orderInCategory="200"
+        app:showAsAction="always" />
+</menu>

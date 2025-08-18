@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="organotiki.mobile.NorthnetStatistics.ItemGrid"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="@string/srch"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/codeDescAltCode"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/search" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+       >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.0"
+            android:gravity="center"
+            android:text="@string/orderby"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_orderby"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="20.0sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout_massQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="@string/massQuantity_"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/editText_massQuantity"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:hint="@string/quantity"
+            android:singleLine="true"
+            android:inputType="numberDecimal"/>
+
+        <Button
+            android:id="@+id/button_applyMassQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/apply" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout_massDiscount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="@string/massDiscount_"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/editText_massDiscount"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:hint="@string/discount"
+            android:singleLine="true"
+            android:inputType="numberDecimal"/>
+
+        <Button
+            android:id="@+id/button_applyMassDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/apply" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="25dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llImage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/column_header1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/image"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/column_header2"
+            android:layout_width="500dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/description"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+        <LinearLayout
+            android:id="@+id/linearLayout_warehouse_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_header4warehouse"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/warehouse"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout_warehouse2_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_header5warehouse2"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/warehouse"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_quantityB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_header4b"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/quantityA"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_quantitySpecial"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_header4special"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/quantityB"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/column_header4"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/quantity"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/column_header3"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/price"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_discountA"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_header9"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/discountA"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/column_header5"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/discount"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout_header_efk"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/column_headerefk"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/surchargesvalue"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/column_header6"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/value"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/column_header7"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/payable"
+            android:textColor="@color/colorAccent" />
+
+
+        <!--<TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#000"/>
+        <TextView
+            android:id="@+id/column_header7"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:text="@string/document"
+            android:gravity="center"
+            android:layout_weight="20"
+            android:singleLine="true"
+            android:textColor="@color/colorAccent"
+            />-->
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listViewItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animationCache="true"
+        android:descendantFocusability="beforeDescendants"
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+        app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true" >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

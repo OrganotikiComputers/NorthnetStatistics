@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <!-- Order By Dropdown -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ταξινόμηση Κατά"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_orderby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/descending"
+            android:layout_width="match_parent"
+            android:text="Αντίστροφη Ταξινόμηση"
+            android:layout_height="wrap_content">
+        </CheckBox>
+        <!-- Code Text Input -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Κωδικός"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <EditText
+            android:id="@+id/edittext_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:hint="Κωδικός" />
+
+        <!-- Description Text Input -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Περιγραφή"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <EditText
+            android:id="@+id/edittext_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:hint="Περιγραφή" />
+        <!-- Suppliers Dropdown -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Προμηθευτής"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_suppliers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Countries Dropdown -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Χώρα"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_countries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Categories Dropdown -->
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Κατηγορία"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+        <!-- Search Button -->
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            android:text="Αναζήτηση" />
+
+        <Button
+            android:id="@+id/clear_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            android:text="Καθαρισμός Φίλτρων" />
+    </LinearLayout>
+</ScrollView>

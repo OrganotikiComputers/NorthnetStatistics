@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_inventory_header"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+
+    <include
+        android:id="@+id/itemsBar"
+        layout="@layout/stats_screen_bar" />
+
+    <LinearLayout
+        android:layout_below="@id/itemsBar"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:id="@+id/fFilters">
+        <fragment
+            android:id="@+id/fheader"
+            android:name="organotiki.mobile.NorthnetStatistics.Filters"
+            android:layout_width="350dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="start" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/itemsBar"
+        android:layout_toEndOf="@+id/fFilters"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:id="@+id/llHeaders"
+            android:background="@color/colorPrimary"
+            android:weightSum="220"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/column_header1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/image"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/description"
+                android:textColor="@color/colorAccent" />
+
+
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+
+            <TextView
+                android:id="@+id/column_header4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Προμηθευτής"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Χώρα"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+
+
+            <TextView
+                android:id="@+id/column_headercategory"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Κατηγορία"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Τιμή Αγοράς"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Νόμισμα"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header13"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Τιμή Χονδρικής"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Αγ 23"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Πωλ 23"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Αγ 24"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Πωλ 24"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Παραγγελίες"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header11"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Υπόλοιπο"
+                android:textColor="@color/colorAccent" />
+
+
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            > </ProgressBar>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dynamicRecyclerView"
+            android:layout_below="@+id/llHeaders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

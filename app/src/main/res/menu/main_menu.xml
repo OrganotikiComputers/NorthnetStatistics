@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item_newOrderChannel"
+            android:title="@string/newOrder">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/menu_new_order"
+                        android:icon="@drawable/ic_add_shopping_cart_black_48dp"
+                        android:title="@string/newOrder" />
+                    <item
+                        android:id="@+id/menu_new_xvanorder"
+                        android:icon="@drawable/ic_truck_delivery_black_48dp"
+                        android:title="@string/xVan_sort" />
+                    <item
+                        android:id="@+id/menu_item_load_orders"
+                        android:icon="@drawable/ic_event_note_black_48dp"
+                        android:title="@string/loadInvoices" />
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/menu_item_customerChannel"
+            android:title="@string/customer">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/menu_item_customer_report"
+                        android:icon="@drawable/ic_person_pin_circle_black_48dp"
+                        android:title="@string/customerReport" />
+                    <item
+                        android:id="@+id/menu_item_online_reports"
+                        android:icon="@drawable/ic_text_fields_black_48dp"
+                        android:title="@string/onlineReports" />
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/menu_item_collectionChannel"
+            android:title="@string/collections">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/menu_item_colletions"
+                        android:icon="@drawable/ic_euro_symbol_black_48dp"
+                        android:title="@string/collections" />
+                    <item
+                        android:id="@+id/menu_item_load_collections"
+                        android:icon="@drawable/ic_event_note_black_48dp"
+                        android:title="@string/loadCollections" />
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/menu_item_SummaryReportChannel"
+            android:title="@string/summaryReport">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item android:icon="@drawable/ic_qr_code_black_48dp"
+                        android:id="@+id/menu_item_scanSummaryReport"
+                        android:title="@string/scanSummary"/>
+                    <item android:icon="@drawable/ic_search_black_48dp"
+                        android:id="@+id/menu_item_showSummaryReport"
+                        android:title="@string/showSummary"/>
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/menu_item_quickPlanChannel"
+            android:title="@string/quickPlan">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/menu_item_QuickPlan"
+                        android:icon="@drawable/baseline_quickreply_black_48dp"
+                        android:title="@string/new_quickPlan" />
+                    <item
+                        android:id="@+id/menu_item_load_QuickPlans"
+                        android:icon="@drawable/ic_event_note_black_48dp"
+                        android:title="@string/loadQuickPlans" />
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/menu_item_settings"
+            android:icon="@drawable/ic_settings_black_48dp"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/menu_item_sync"
+            android:icon="@drawable/ic_sync_black_48dp"
+            android:title="@string/sync" />
+    </group>
+</menu>

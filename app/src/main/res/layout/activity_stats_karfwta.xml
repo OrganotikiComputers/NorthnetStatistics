@@ -35,7 +35,7 @@
             android:layout_height="25dp"
             android:id="@+id/llHeaders"
             android:background="@color/colorPrimary"
-            android:weightSum="220"
+            android:weightSum="170"
             android:orientation="horizontal">
 
 
@@ -47,6 +47,21 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="@string/image"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header14"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Σελίδα"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -82,7 +97,7 @@
                 android:text="Προμηθευτής"
                 android:textColor="@color/colorAccent" />
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="#000" />
@@ -95,9 +110,9 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Χώρα"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent" />-->
 
-            <TextView
+          <!--  <TextView
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="#000" />
@@ -112,7 +127,9 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Κατηγορία"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent" />-->
+
+
 
             <TextView
                 android:layout_width="2dp"
@@ -159,7 +176,7 @@
                 android:text="Τιμή Χονδρικής"
                 android:textColor="@color/colorAccent" />
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="#000" />
@@ -187,7 +204,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Πωλ 23"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent" />-->
 
             <TextView
                 android:layout_width="2dp"
@@ -201,7 +218,23 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Αγ 24"
+                android:text="Αγ 25"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+
+            <TextView
+                android:id="@+id/column_header10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Παραγγελίες"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -216,23 +249,10 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Πωλ 24"
+                android:text="Πωλ 25"
                 android:textColor="@color/colorAccent" />
 
-            <TextView
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="#000" />
 
-            <TextView
-                android:id="@+id/column_header10"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="Παραγγελίες"
-                android:textColor="@color/colorAccent" />
 
             <TextView
                 android:layout_width="2dp"

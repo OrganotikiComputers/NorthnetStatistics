@@ -88,9 +88,25 @@
             android:layout_height="wrap_content" />
 
 
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Από Σελίδα"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_pages1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-
-
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Εώς Σελίδα"
+            android:textStyle="bold"
+            android:paddingTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinner_pages2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
 

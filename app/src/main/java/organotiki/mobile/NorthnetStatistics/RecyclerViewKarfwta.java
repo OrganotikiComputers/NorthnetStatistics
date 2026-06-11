@@ -53,13 +53,14 @@ public class RecyclerViewKarfwta extends RecyclerView.Adapter<RecyclerViewKarfwt
         holder.code.setText(getValueByKey(obj, "CODE"));
         holder.description.setText(getValueByKey(obj, "DESCRIPTION"));
         holder.promitheuthis.setText(getValueByKey(obj, "SUPPLIER"));
-        holder.xwra.setText(getValueByKey(obj, "COUNTRY"));
-        holder.katigoria.setText(getValueByKey(obj, "CATEGORY"));
+        //holder.xwra.setText(getValueByKey(obj, "COUNTRY"));
+        //holder.katigoria.setText(getValueByKey(obj, "CATEGORY"));
         holder.timi_agoras.setText(getValueByKey(obj, "TIMI_AGORAS"));
         holder.nomisma.setText(getValueByKey(obj, "NOMISMA"));
+        holder.page.setText(getValueByKey(obj, "PAGE_PROSPECT"));
         holder.timi_xondrikis.setText(getValueByKey(obj, "TIMI_XONDRIKIS"));
-        holder.ag_23.setText(getValueByKey(obj, "POSOTITA_AGORAS_23"));
-        holder.pwl_23.setText(getValueByKey(obj, "POSOTITA_PWLISEWN_23"));
+        //holder.ag_23.setText(getValueByKey(obj, "POSOTITA_AGORAS_23"));
+        //holder.pwl_23.setText(getValueByKey(obj, "POSOTITA_PWLISEWN_23"));
         holder.ag_24.setText(getValueByKey(obj, "POSOTITA_AGORAS_24"));
         holder.pwl_24.setText(getValueByKey(obj, "POSOTITA_PWLISEWN_24"));
         holder.parag.setText(getValueByKey(obj, "PARAGGELIES"));
@@ -122,7 +123,8 @@ public class RecyclerViewKarfwta extends RecyclerView.Adapter<RecyclerViewKarfwt
         }
     }
     static class RecyclerViewKarfwtaViewHolder extends RecyclerView.ViewHolder {
-        TextView code, description, promitheuthis, xwra, katigoria,timi_agoras, nomisma, timi_xondrikis,ag_23, pwl_23, ag_24, pwl_24, parag, ypol;
+        TextView code, description, promitheuthis, timi_agoras,page, nomisma, timi_xondrikis, ag_24, pwl_24, parag, ypol;
+        //TextView xwra, katigoria,ag_23, pwl_23;
         ImageView image;
 
         public RecyclerViewKarfwtaViewHolder(@NonNull View itemView) {
@@ -130,13 +132,14 @@ public class RecyclerViewKarfwta extends RecyclerView.Adapter<RecyclerViewKarfwt
             code = itemView.findViewById(R.id.code);
             description = itemView.findViewById(R.id.description);
             promitheuthis = itemView.findViewById(R.id.promitheuthis);
-            xwra = itemView.findViewById(R.id.xwra);
-            katigoria = itemView.findViewById(R.id.katigoria);
+            //xwra = itemView.findViewById(R.id.xwra);
+            //katigoria = itemView.findViewById(R.id.katigoria);
+            page = itemView.findViewById(R.id.page);
             timi_agoras = itemView.findViewById(R.id.timi_agoras);
             nomisma = itemView.findViewById(R.id.nomisma);
             timi_xondrikis = itemView.findViewById(R.id.timi_xondrikis);
-            ag_23 = itemView.findViewById(R.id.ag_23);
-            pwl_23 = itemView.findViewById(R.id.pwl_23);
+            //ag_23 = itemView.findViewById(R.id.ag_23);
+            //pwl_23 = itemView.findViewById(R.id.pwl_23);
             ag_24 = itemView.findViewById(R.id.ag_24);
             pwl_24 = itemView.findViewById(R.id.pwl_24);
             parag = itemView.findViewById(R.id.parag);

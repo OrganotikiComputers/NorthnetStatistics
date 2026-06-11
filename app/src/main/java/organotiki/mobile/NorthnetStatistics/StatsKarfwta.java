@@ -61,7 +61,7 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
     private List<String> keys;
     ImageView MenuShowFilters;
     LinearLayout fFilters;
-    private Spinner spinnerSuppliers, spinnerCountries, spinnerCategories, spinnerOrderBy;
+    private Spinner spinnerSuppliers, spinnerCountries, spinnerCategories, spinnerOrderBy , spinnerPages1,spinnerPages2;
     private EditText editTextCode, editTextDescription;
     private CheckBox descending;
     private Button buttonSearch,buttonclearfilters;
@@ -111,6 +111,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         spinnerSuppliers = findViewById(R.id.spinner_suppliers);
         spinnerCountries = findViewById(R.id.spinner_countries);
         spinnerCategories = findViewById(R.id.spinner_categories);
+        spinnerPages1 = findViewById(R.id.spinner_pages1);
+        spinnerPages2 = findViewById(R.id.spinner_pages2);
         spinnerOrderBy = findViewById(R.id.spinner_orderby);
         editTextCode = findViewById(R.id.edittext_code);
 
@@ -146,6 +148,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 spinnerCategories.setSelection(0);
                 spinnerCountries.setSelection(0);
                 spinnerSuppliers.setSelection(0);
+                spinnerPages1.setSelection(0);
+                spinnerPages2.setSelection(0);
                 editTextCode.setText("");
                 editTextDescription.setText("");
             }
@@ -157,15 +161,21 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         List<String> suppliers = new ArrayList<>();
         List<String> countries = new ArrayList<>();
         List<String> categories = new ArrayList<>();
+        List<String> pages1 = new ArrayList<>();
+        List<String> pages2 = new ArrayList<>();
 
         suppliers.add("");
         countries.add("");
         categories.add("");
+        pages1.add("");
+        pages2.add("");
 
         RealmResults<DynamicRealmObject> allObjects = realm.where(DynamicRealmObject.class).findAll();
         HashSet<String> supplierSet = new HashSet<>();
         HashSet<String> countrySet = new HashSet<>();
         HashSet<String> categoriesSet = new HashSet<>();
+        HashSet<String> pages1Set = new HashSet<>();
+        HashSet<String> pages2Set = new HashSet<>();
         for (DynamicRealmObject obj : allObjects) {
             for (KeyValue kv : obj.getFields()) {
                 if ("SUPPLIER".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
@@ -177,41 +187,54 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 else if ("CATEGORY".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     categoriesSet.add(kv.getValue());
                 }
+                else if ("PAGE_PROSPECT".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+                    pages1Set.add(kv.getValue());
+                    pages2Set.add(kv.getValue());
+                }
             }
         }
         List<String> sortedSuppliers = new ArrayList<>(supplierSet);
         List<String> sortedCountries = new ArrayList<>(countrySet);
         List<String> sortedCategories = new ArrayList<>(categoriesSet);
+        List<String> sortedPages1 = new ArrayList<>(pages1Set);
+        List<String> sortedPages2 = new ArrayList<>(pages2Set);
+
 
         Collections.sort(sortedSuppliers, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCountries, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCategories, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);
 
         suppliers.addAll(sortedSuppliers);
         countries.addAll(sortedCountries);
         categories.addAll(sortedCategories);
-
+        pages1.addAll(sortedPages1);
+        pages2.addAll(sortedPages2);
 
 
         List<String> orderBy = new ArrayList<>();
+        orderBy.add("Σελίδα");
         orderBy.add("Κωδικό");
         orderBy.add("Περιγραφή");
         orderBy.add("Προμηθευτή");
-        orderBy.add("Χώρα");
-        orderBy.add("Κατηγορία");
+        //orderBy.add("Χώρα");
+        //orderBy.add("Κατηγορία");
         orderBy.add("Τιμή αγοράς");
         orderBy.add("Νόμισμα");
         orderBy.add("Τιμή Χονδρικής");
-        orderBy.add("Αγορές 23");
-        orderBy.add("Πωλήσεις 23");
-        orderBy.add("Αγορές 24");
-        orderBy.add("Πωλήσεις 24");
+        //orderBy.add("Αγορές 23");
+        //orderBy.add("Πωλήσεις 23");
+        orderBy.add("Αγορές 25");
+        orderBy.add("Πωλήσεις 25");
         orderBy.add("Παραγγελίες");
         orderBy.add("Υπόλοιπο");
 
         spinnerSuppliers.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, suppliers));
         spinnerCountries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countries));
         spinnerCategories.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories));
+        spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
+        spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));
         spinnerOrderBy.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, orderBy));
     }
 
@@ -237,6 +260,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 String selectedSupplier = spinnerSuppliers.getSelectedItem().toString();
                 String selectedCountry = spinnerCountries.getSelectedItem().toString();
                 String selectedCategory = spinnerCategories.getSelectedItem().toString();
+                String selectedPage1 = spinnerPages1.getSelectedItem().toString();
+                String selectedPage2 = spinnerPages2.getSelectedItem().toString();
                 String selectedOrder = spinnerOrderBy.getSelectedItem().toString();
                 String codeInput = editTextCode.getText().toString().trim();
                 String descriptionInput = editTextDescription.getText().toString().trim();
@@ -256,6 +281,13 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                     resultList = filterByFieldContains(resultList, "DESCRIPTION", descriptionInput.toUpperCase());
                 }
 
+                if(!TextUtils.isEmpty(selectedPage1)){
+                    resultList = filterByFieldGreater(resultList, "PAGE_PROSPECT", selectedPage1);
+                }
+
+                if(!TextUtils.isEmpty(selectedPage2)){
+                    resultList = filterByFieldLower(resultList, "PAGE_PROSPECT", selectedPage2);
+                }
 
                 String test=query.getDescription();
 
@@ -268,19 +300,20 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                     if(selectedOrder.equals("Κωδικό")) selectedOrderID="CODE";
                     else if(selectedOrder.equals("Περιγραφή")) selectedOrderID="DESCRIPTION";
                     else if(selectedOrder.equals("Προμηθευτή")) selectedOrderID="SUPPLIER";
-                    else if(selectedOrder.equals("Χώρα")) selectedOrderID="COUNTRY";
-                    else if(selectedOrder.equals("Κατηγορία")) selectedOrderID="CATEGORY";
+                    //else if(selectedOrder.equals("Χώρα")) selectedOrderID="COUNTRY";
+                    //else if(selectedOrder.equals("Κατηγορία")) selectedOrderID="CATEGORY";
                     else if(selectedOrder.equals("Τιμή αγοράς")) selectedOrderID="TIMI_AGORAS";
                     else if(selectedOrder.equals("Νόμισμα")) selectedOrderID="NOMISMA";
+                    else if(selectedOrder.equals("Σελίδα")) selectedOrderID="PAGE_PROSPECT";
                     else if(selectedOrder.equals("Τιμή Χονδρικής")) selectedOrderID="TIMI_XONDRIKIS";
-                    else if(selectedOrder.equals("Αγορές 23")) selectedOrderID="POSOTITA_AGORAS_23";
-                    else if(selectedOrder.equals("Πωλήσεις 23")) selectedOrderID="POSOTITA_PWLISEWN_23";
-                    else if(selectedOrder.equals("Αγορές 24")) selectedOrderID="POSOTITA_AGORAS_24";
-                    else if(selectedOrder.equals("Πωλήσεις 24")) selectedOrderID="POSOTITA_PWLISEWN_24";
+                   //else if(selectedOrder.equals("Αγορές 23")) selectedOrderID="POSOTITA_AGORAS_23";
+                    //else if(selectedOrder.equals("Πωλήσεις 23")) selectedOrderID="POSOTITA_PWLISEWN_23";
+                    else if(selectedOrder.equals("Αγορές 25")) selectedOrderID="POSOTITA_AGORAS_24";
+                    else if(selectedOrder.equals("Πωλήσεις 25")) selectedOrderID="POSOTITA_PWLISEWN_24";
                     else if(selectedOrder.equals("Παραγγελίες")) selectedOrderID="PARAGGELIES";
                     else if(selectedOrder.equals("Υπόλοιπο"))  selectedOrderID="YPOLOIPO";
                     else {
-                        selectedOrderID = "CODE";
+                        selectedOrderID = "PAGE_PROSPECT";
                     }
 
                     Set<String> numericFields = new HashSet<>(Arrays.asList(
@@ -337,6 +370,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 .equalTo("fields.value", value, Case.INSENSITIVE)
                 .endGroup();
     }
+
+
     private List<DynamicRealmObject> filterByFieldContains(List<DynamicRealmObject> list, String key, String value) {
         List<DynamicRealmObject> filtered = new ArrayList<>();
         for (DynamicRealmObject obj : list) {
@@ -352,6 +387,81 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         }
         return filtered;
     }
+
+    private List<DynamicRealmObject> filterByFieldGreater(
+            List<DynamicRealmObject> list,
+            String key,
+            String value
+    ) {
+        List<DynamicRealmObject> filtered = new ArrayList<>();
+        double compareValue;
+
+        try {
+            compareValue = Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            // if the given value is not numeric, just return the original list (or empty)
+            return filtered;
+        }
+
+        for (DynamicRealmObject obj : list) {
+            RealmList<KeyValue> fields = obj.getFields();
+            for (KeyValue kv : fields) {
+                String k = kv.getKey();
+                String v = kv.getValue();
+
+                if (key.equalsIgnoreCase(k) && v != null) {
+                    try {
+                        double fieldValue = Double.parseDouble(v);
+                        if (fieldValue >= compareValue) {
+                            filtered.add(obj);
+                            break;
+                        }
+                    } catch (NumberFormatException ignored) {
+                        // skip if not numeric
+                    }
+                }
+            }
+        }
+        return filtered;
+    }
+
+    private List<DynamicRealmObject> filterByFieldLower(
+            List<DynamicRealmObject> list,
+            String key,
+            String value
+    ) {
+        List<DynamicRealmObject> filtered = new ArrayList<>();
+        double compareValue;
+
+        try {
+            compareValue = Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            // if the given value is not numeric, just return the original list (or empty)
+            return filtered;
+        }
+
+        for (DynamicRealmObject obj : list) {
+            RealmList<KeyValue> fields = obj.getFields();
+            for (KeyValue kv : fields) {
+                String k = kv.getKey();
+                String v = kv.getValue();
+
+                if (key.equalsIgnoreCase(k) && v != null) {
+                    try {
+                        double fieldValue = Double.parseDouble(v);
+                        if (fieldValue <= compareValue) {
+                            filtered.add(obj);
+                            break;
+                        }
+                    } catch (NumberFormatException ignored) {
+                        // skip if not numeric
+                    }
+                }
+            }
+        }
+        return filtered;
+    }
+
     private BigDecimal parseDecimal(String value) {
         try {
             return new BigDecimal(value.replace(",", ".")); // in case commas are used

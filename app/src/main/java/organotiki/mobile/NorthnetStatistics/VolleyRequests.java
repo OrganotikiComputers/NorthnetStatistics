@@ -859,7 +859,7 @@ public class VolleyRequests {
         HashMap<String, String> params = new HashMap<>();
         String columns = URLEncoder.encode("*", "UTF-8");  // results in "%2A"
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = (isLocalIPReachable() ? gVar.getLocalIP() : gVar.getOnlineIP()) + "MobStoreService/FillBackOfficeCombobox?Columns=*&Table=Z_VW_org_tablet_prom2";
+        String url = (isLocalIPReachable() ? gVar.getLocalIP() : gVar.getOnlineIP()) + "MobStoreService/FillBackOfficeCombobox?Columns=*&Table=(SELECT * FROM Z_VW_org_tablet_prom2) t"; ///den douleve xwris emfolevmeno select,min rwtas giati,rwta tin oracle tou karagianni
         Log.d("asdfg", url + params.toString());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,

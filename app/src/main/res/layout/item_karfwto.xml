@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/linLayout"
-        android:weightSum="220"
+        android:weightSum="170"
         android:orientation="horizontal">
 
         <ImageView
@@ -20,6 +20,28 @@
             android:contentDescription="@string/zoomIn"
             android:scaleType="fitCenter"
             android:src="@drawable/logoo" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/page"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
 
         <View
             android:layout_width="2dp"
@@ -90,7 +112,7 @@
         </HorizontalScrollView>
 
 
-        <View
+      <!--  <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF" />
@@ -132,12 +154,13 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:maxLines="1"/>
-        </HorizontalScrollView>
+        </HorizontalScrollView>-->
 
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF" />
+
 
         <HorizontalScrollView
             android:layout_width="0dp"
@@ -155,6 +178,8 @@
                 android:textColor="@android:color/white"
                 android:maxLines="1"/>
         </HorizontalScrollView>
+
+
 
         <View
             android:layout_width="2dp"
@@ -198,7 +223,7 @@
                 android:textColor="@android:color/white"
                 android:maxLines="1"/>
         </HorizontalScrollView>
-        <View
+    <!--    <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF" />
@@ -218,8 +243,8 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:maxLines="1"/>
-        </HorizontalScrollView>
-        <View
+        </HorizontalScrollView>-->
+   <!--     <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF" />
@@ -238,7 +263,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:maxLines="1"/>
-        </HorizontalScrollView>
+        </HorizontalScrollView>-->
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
@@ -274,7 +299,7 @@
             android:layout_gravity="center_vertical"
             >
             <TextView
-                android:id="@+id/pwl_24"
+                android:id="@+id/parag"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
@@ -296,7 +321,7 @@
             android:layout_gravity="center_vertical"
             >
             <TextView
-                android:id="@+id/parag"
+                android:id="@+id/pwl_24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"

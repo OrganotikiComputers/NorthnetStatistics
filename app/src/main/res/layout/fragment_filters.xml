@@ -93,20 +93,38 @@
             android:text="Από Σελίδα"
             android:textStyle="bold"
             android:paddingTop="8dp"/>
-        <Spinner
-            android:id="@+id/spinner_pages1"
+        <!--  <Spinner
+             android:id="@+id/spinner_pages1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />-->
+
+        <EditText
+            android:id="@+id/edittext_pages1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:imeOptions="actionSearch"
+            android:hint="Από Σελίδα" />
 
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Εώς Σελίδα"
             android:textStyle="bold"
             android:paddingTop="8dp"/>
-        <Spinner
-            android:id="@+id/spinner_pages2"
+        <!-- <Spinner
+             android:id="@+id/spinner_pages2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />-->
+
+        <EditText
+            android:id="@+id/edittext_pages2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:inputType="number"
+            android:imeOptions="actionSearch"
+            android:hint="Εώς Σελίδα" />
 
 
 

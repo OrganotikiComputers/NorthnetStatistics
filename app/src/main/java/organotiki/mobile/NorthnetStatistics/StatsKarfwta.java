@@ -61,8 +61,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
     private List<String> keys;
     ImageView MenuShowFilters;
     LinearLayout fFilters;
-    private Spinner spinnerSuppliers, spinnerCountries, spinnerCategories, spinnerOrderBy , spinnerPages1,spinnerPages2;
-    private EditText editTextCode, editTextDescription;
+    private Spinner spinnerSuppliers, spinnerCountries, spinnerCategories, spinnerOrderBy /*, spinnerPages1,spinnerPages2*/;
+    private EditText editTextCode, editTextDescription,editTextPages1,editTextPages2;
     private CheckBox descending;
     private Button buttonSearch,buttonclearfilters;
 
@@ -111,8 +111,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         spinnerSuppliers = findViewById(R.id.spinner_suppliers);
         spinnerCountries = findViewById(R.id.spinner_countries);
         spinnerCategories = findViewById(R.id.spinner_categories);
-        spinnerPages1 = findViewById(R.id.spinner_pages1);
-        spinnerPages2 = findViewById(R.id.spinner_pages2);
+      /*  spinnerPages1 = findViewById(R.id.spinner_pages1);
+        spinnerPages2 = findViewById(R.id.spinner_pages2);*/
         spinnerOrderBy = findViewById(R.id.spinner_orderby);
         editTextCode = findViewById(R.id.edittext_code);
 
@@ -138,6 +138,30 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
             return false;
         });
 
+        editTextPages1 = findViewById(R.id.edittext_pages1);
+
+        editTextPages1.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                search();
+
+                return true; // consume event
+            }
+            return false;
+        });
+
+        editTextPages2 = findViewById(R.id.edittext_pages2);
+
+        editTextPages2.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                search();
+
+                return true; // consume event
+            }
+            return false;
+        });
+
         descending = findViewById(R.id.descending);
         buttonSearch = findViewById(R.id.button_search);
         buttonclearfilters=findViewById(R.id.clear_filter);
@@ -148,10 +172,12 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 spinnerCategories.setSelection(0);
                 spinnerCountries.setSelection(0);
                 spinnerSuppliers.setSelection(0);
-                spinnerPages1.setSelection(0);
-                spinnerPages2.setSelection(0);
+                /*spinnerPages1.setSelection(0);
+                spinnerPages2.setSelection(0);*/
                 editTextCode.setText("");
                 editTextDescription.setText("");
+                editTextPages1.setText("");
+                editTextPages2.setText("");
             }
         });
     }
@@ -161,21 +187,21 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         List<String> suppliers = new ArrayList<>();
         List<String> countries = new ArrayList<>();
         List<String> categories = new ArrayList<>();
-        List<String> pages1 = new ArrayList<>();
-        List<String> pages2 = new ArrayList<>();
+      /*  List<String> pages1 = new ArrayList<>();
+        List<String> pages2 = new ArrayList<>();*/
 
         suppliers.add("");
         countries.add("");
         categories.add("");
-        pages1.add("");
-        pages2.add("");
+       /* pages1.add("");
+        pages2.add("");*/
 
         RealmResults<DynamicRealmObject> allObjects = realm.where(DynamicRealmObject.class).findAll();
         HashSet<String> supplierSet = new HashSet<>();
         HashSet<String> countrySet = new HashSet<>();
         HashSet<String> categoriesSet = new HashSet<>();
-        HashSet<String> pages1Set = new HashSet<>();
-        HashSet<String> pages2Set = new HashSet<>();
+       /* HashSet<String> pages1Set = new HashSet<>();
+        HashSet<String> pages2Set = new HashSet<>();*/
         for (DynamicRealmObject obj : allObjects) {
             for (KeyValue kv : obj.getFields()) {
                 if ("SUPPLIER".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
@@ -187,30 +213,30 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 else if ("CATEGORY".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     categoriesSet.add(kv.getValue());
                 }
-                else if ("PAGE_PROSPECT".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+               /* else if ("PAGE_PROSPECT".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     pages1Set.add(kv.getValue());
                     pages2Set.add(kv.getValue());
-                }
+                }*/
             }
         }
         List<String> sortedSuppliers = new ArrayList<>(supplierSet);
         List<String> sortedCountries = new ArrayList<>(countrySet);
         List<String> sortedCategories = new ArrayList<>(categoriesSet);
-        List<String> sortedPages1 = new ArrayList<>(pages1Set);
-        List<String> sortedPages2 = new ArrayList<>(pages2Set);
+        /*List<String> sortedPages1 = new ArrayList<>(pages1Set);
+        List<String> sortedPages2 = new ArrayList<>(pages2Set);*/
 
 
         Collections.sort(sortedSuppliers, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCountries, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCategories, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);
+       /* Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);*/
 
         suppliers.addAll(sortedSuppliers);
         countries.addAll(sortedCountries);
         categories.addAll(sortedCategories);
-        pages1.addAll(sortedPages1);
-        pages2.addAll(sortedPages2);
+      /*  pages1.addAll(sortedPages1);
+        pages2.addAll(sortedPages2);*/
 
 
         List<String> orderBy = new ArrayList<>();
@@ -233,8 +259,8 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         spinnerSuppliers.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, suppliers));
         spinnerCountries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countries));
         spinnerCategories.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories));
-        spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
-        spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));
+        /*spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
+        spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));*/
         spinnerOrderBy.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, orderBy));
     }
 
@@ -260,11 +286,13 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 String selectedSupplier = spinnerSuppliers.getSelectedItem().toString();
                 String selectedCountry = spinnerCountries.getSelectedItem().toString();
                 String selectedCategory = spinnerCategories.getSelectedItem().toString();
-                String selectedPage1 = spinnerPages1.getSelectedItem().toString();
-                String selectedPage2 = spinnerPages2.getSelectedItem().toString();
+             /*   String selectedPage1 = spinnerPages1.getSelectedItem().toString();
+                String selectedPage2 = spinnerPages2.getSelectedItem().toString();*/
                 String selectedOrder = spinnerOrderBy.getSelectedItem().toString();
                 String codeInput = editTextCode.getText().toString().trim();
                 String descriptionInput = editTextDescription.getText().toString().trim();
+                String page1Input = editTextPages1.getText().toString().trim();
+                String page2Input = editTextPages2.getText().toString().trim();
 
                 RealmQuery<DynamicRealmObject> query = backgroundRealm.where(DynamicRealmObject.class);
 
@@ -285,12 +313,20 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                     resultList = filterByFieldContains(resultList, "DESCRIPTION", descriptionInput.toUpperCase());
                 }
 
-                if(!TextUtils.isEmpty(selectedPage1)){
+               /* if(!TextUtils.isEmpty(selectedPage1)){
                     resultList = filterByFieldGreater(resultList, "PAGE_PROSPECT", selectedPage1);
                 }
 
                 if(!TextUtils.isEmpty(selectedPage2)){
                     resultList = filterByFieldLower(resultList, "PAGE_PROSPECT", selectedPage2);
+                }*/
+
+                if(!TextUtils.isEmpty(page1Input)){
+                    resultList = filterByFieldGreater(resultList, "PAGE_PROSPECT", page1Input);
+                }
+
+                if(!TextUtils.isEmpty(page2Input)){
+                    resultList = filterByFieldLower(resultList, "PAGE_PROSPECT", page2Input);
                 }
 
                 String test=query.getDescription();

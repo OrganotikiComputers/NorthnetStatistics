@@ -57,8 +57,8 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
     private List<String> keys;
     ImageView MenuShowFilters;
     LinearLayout fFilters;
-    private Spinner spinnerCategories1, spinnerCategories2, spinnerCategories3, spinnerOrderBy , spinnerPages1,spinnerPages2;
-    private EditText editTextCode, editTextDescription;
+    private Spinner spinnerCategories1, spinnerCategories2, spinnerCategories3, spinnerOrderBy /*, spinnerPages1,spinnerPages2*/;
+    private EditText editTextCode, editTextDescription,editTextPages1,editTextPages2;
     private TextView totalAp, totalAg,totalPar,totalPwl,totalKent;
     private CheckBox descending;
     private Button buttonSearch,buttonclearfilters;
@@ -108,8 +108,8 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
         spinnerCategories1 = findViewById(R.id.spinner_categories1);
         spinnerCategories2 = findViewById(R.id.spinner_categories2);
         spinnerCategories3 = findViewById(R.id.spinner_categories3);
-        spinnerPages1 = findViewById(R.id.spinner_pages1);
-        spinnerPages2 = findViewById(R.id.spinner_pages2);
+       /* spinnerPages1 = findViewById(R.id.spinner_pages1);
+        spinnerPages2 = findViewById(R.id.spinner_pages2);*/
         spinnerOrderBy = findViewById(R.id.spinner_orderby);
 
 
@@ -144,6 +144,30 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
             return false;
         });
 
+        editTextPages1 = findViewById(R.id.edittext_pages1);
+
+        editTextPages1.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                search();
+
+                return true; // consume event
+            }
+            return false;
+        });
+
+        editTextPages2 = findViewById(R.id.edittext_pages2);
+
+        editTextPages2.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                search();
+
+                return true; // consume event
+            }
+            return false;
+        });
+
         descending = findViewById(R.id.descending);
         buttonSearch = findViewById(R.id.button_search);
         buttonclearfilters=findViewById(R.id.clear_filter);
@@ -154,10 +178,12 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
                 spinnerCategories1.setSelection(0);
                 spinnerCategories2.setSelection(0);
                 spinnerCategories3.setSelection(0);
-                spinnerPages1.setSelection(0);
-                spinnerPages2.setSelection(0);
+                /*spinnerPages1.setSelection(0);
+                spinnerPages2.setSelection(0);*/
                 editTextCode.setText("");
                 editTextDescription.setText("");
+                editTextPages1.setText("");
+                editTextPages2.setText("");
             }
         });
     }
@@ -167,21 +193,21 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
         List<String> categories1 = new ArrayList<>();
         List<String> categories2 = new ArrayList<>();
         List<String> categories3 = new ArrayList<>();
-        List<String> pages1 = new ArrayList<>();
-        List<String> pages2 = new ArrayList<>();
+      /*  List<String> pages1 = new ArrayList<>();
+        List<String> pages2 = new ArrayList<>();*/
 
         categories1.add("");
         categories2.add("");
         categories3.add("");
-        pages1.add("");
-        pages2.add("");
+      /*  pages1.add("");
+        pages2.add("");*/
 
         RealmResults<DynamicRealmObject> allObjects = realm.where(DynamicRealmObject.class).findAll();
         HashSet<String> categories1Set = new HashSet<>();
         HashSet<String> categories2Set = new HashSet<>();
         HashSet<String> categories3Set = new HashSet<>();
-        HashSet<String> pages1Set = new HashSet<>();
-        HashSet<String> pages2Set = new HashSet<>();
+       /* HashSet<String> pages1Set = new HashSet<>();
+        HashSet<String> pages2Set = new HashSet<>();*/
         for (DynamicRealmObject obj : allObjects) {
             for (KeyValue kv : obj.getFields()) {
                 if ("ΚΑΤΗΓ".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
@@ -193,30 +219,30 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
                 else if ("ΚΑΤΗΓ_3".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     categories3Set.add(kv.getValue());
                 }
-                else if ("ΣΕΛ".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+               /* else if ("ΣΕΛ".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     pages1Set.add(kv.getValue());
                     pages2Set.add(kv.getValue());
-                }
+                }*/
             }
         }
         List<String> sortedCategories1 = new ArrayList<>(categories1Set);
         List<String> sortedCategories2 = new ArrayList<>(categories2Set);
         List<String> sortedCategories3 = new ArrayList<>(categories3Set);
-        List<String> sortedPages1 = new ArrayList<>(pages1Set);
-        List<String> sortedPages2 = new ArrayList<>(pages2Set);
+       /* List<String> sortedPages1 = new ArrayList<>(pages1Set);
+        List<String> sortedPages2 = new ArrayList<>(pages2Set);*/
 
 
         Collections.sort(sortedCategories1, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCategories2, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedCategories3, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);
+      /*  Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);*/
 
         categories1.addAll(sortedCategories1);
         categories2.addAll(sortedCategories2);
         categories3.addAll(sortedCategories3);
-        pages1.addAll(sortedPages1);
-        pages2.addAll(sortedPages2);
+      /*  pages1.addAll(sortedPages1);
+        pages2.addAll(sortedPages2);*/
 
 
         List<String> orderBy = new ArrayList<>();
@@ -238,8 +264,8 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
         spinnerCategories1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories1));
         spinnerCategories2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories2));
         spinnerCategories3.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories3));
-        spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
-        spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));
+     /*   spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
+        spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));*/
         spinnerOrderBy.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, orderBy));
     }
 
@@ -257,11 +283,13 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
                 String selectedCategory1 = spinnerCategories1.getSelectedItem().toString();
                 String selectedCategory2 = spinnerCategories2.getSelectedItem().toString();
                 String selectedCategory3 = spinnerCategories3.getSelectedItem().toString();
-                String selectedPage1 = spinnerPages1.getSelectedItem().toString();
-                String selectedPage2 = spinnerPages2.getSelectedItem().toString();
+               /* String selectedPage1 = spinnerPages1.getSelectedItem().toString();
+                String selectedPage2 = spinnerPages2.getSelectedItem().toString();*/
                 String selectedOrder = spinnerOrderBy.getSelectedItem().toString();
                 String codeInput = editTextCode.getText().toString().trim();
                 String descriptionInput = editTextDescription.getText().toString().trim();
+                String page1Input = editTextPages1.getText().toString().trim();
+                String page2Input = editTextPages2.getText().toString().trim();
 
                 RealmQuery<DynamicRealmObject> query = backgroundRealm.where(DynamicRealmObject.class);
                 if (TextUtils.isEmpty(codeInput)){
@@ -364,12 +392,20 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
                     resultList = filterByFieldContains(resultList, "ΠΕΡΙΓΡΑΦΗ", descriptionInput.toUpperCase());
                 }
 
-                if(!TextUtils.isEmpty(selectedPage1)){
+               /* if(!TextUtils.isEmpty(selectedPage1)){
                     resultList = filterByFieldGreater(resultList, "ΣΕΛ", selectedPage1);
                 }
 
                 if(!TextUtils.isEmpty(selectedPage2)){
                     resultList = filterByFieldLower(resultList, "ΣΕΛ", selectedPage2);
+                }*/
+
+                 if(!TextUtils.isEmpty(page1Input)){
+                    resultList = filterByFieldGreater(resultList, "ΣΕΛ", page1Input);
+                }
+
+                if(!TextUtils.isEmpty(page2Input)){
+                    resultList = filterByFieldLower(resultList, "ΣΕΛ", page2Input);
                 }
 
                 String test=query.getDescription();

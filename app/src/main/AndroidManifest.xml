@@ -70,6 +70,17 @@
                 android:value="organotiki.mobile.NorthnetStatistics.MainScreen" />
         </activity>
         <activity
+            android:name="organotiki.mobile.NorthnetStatistics.StatsBI"
+            android:label="Στατιστικά BI"
+            android:screenOrientation="landscape"
+            android:parentActivityName="organotiki.mobile.NorthnetStatistics.MainScreen"
+            android:windowSoftInputMode="stateHidden"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="organotiki.mobile.NorthnetStatistics.MainScreen" />
+        </activity>
+        <activity
             android:name="organotiki.mobile.NorthnetStatistics.OfflineStats"
             android:label="@string/offlinestats"
             android:parentActivityName="organotiki.mobile.NorthnetStatistics.MainScreen"

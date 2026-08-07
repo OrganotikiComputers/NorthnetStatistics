@@ -18,7 +18,7 @@
         android:id="@+id/fFilters">
         <fragment
             android:id="@+id/fheader"
-            android:name="organotiki.mobile.NorthnetStatistics.Filters"
+            android:name="organotiki.mobile.NorthnetStatistics.FiltersBI"
             android:layout_width="350dp"
             android:layout_height="fill_parent"
             android:layout_gravity="start" />
@@ -35,7 +35,7 @@
             android:layout_height="25dp"
             android:id="@+id/llHeaders"
             android:background="@color/colorPrimary"
-            android:weightSum="170"
+            android:weightSum="210"
             android:orientation="horizontal">
 
 
@@ -70,13 +70,28 @@
                 android:background="#000" />
 
             <TextView
+                android:id="@+id/column_header21"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Κατηγορία"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
                 android:id="@+id/column_header2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="50"
+                android:layout_weight="20"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="@string/description"
+                android:text="@string/code"
                 android:textColor="@color/colorAccent" />
 
 
@@ -91,43 +106,43 @@
                 android:id="@+id/column_header4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
+                android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Προμηθευτής"
+                android:text="Tιμή Χονδρικής"
                 android:textColor="@color/colorAccent" />
 
-           <!-- <TextView
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="#000" />
+            <!-- <TextView
+                 android:layout_width="2dp"
+                 android:layout_height="match_parent"
+                 android:background="#000" />
 
-            <TextView
-                android:id="@+id/column_header3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="15"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="Χώρα"
-                android:textColor="@color/colorAccent" />-->
+             <TextView
+                 android:id="@+id/column_header3"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="15"
+                 android:gravity="center"
+                 android:singleLine="true"
+                 android:text="Χώρα"
+                 android:textColor="@color/colorAccent" />-->
 
-          <!--  <TextView
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="#000" />
+            <!--  <TextView
+                  android:layout_width="2dp"
+                  android:layout_height="match_parent"
+                  android:background="#000" />
 
 
 
-            <TextView
-                android:id="@+id/column_headercategory"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="Κατηγορία"
-                android:textColor="@color/colorAccent" />-->
+              <TextView
+                  android:id="@+id/column_headercategory"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="25"
+                  android:gravity="center"
+                  android:singleLine="true"
+                  android:text="Κατηγορία"
+                  android:textColor="@color/colorAccent" />-->
 
 
 
@@ -140,10 +155,10 @@
                 android:id="@+id/column_header12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="10"
+                android:layout_weight="40"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Τιμή Αγοράς"
+                android:text="Περιγραφή"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -158,7 +173,7 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Νόμισμα"
+                android:text="Απογραφή"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -173,38 +188,38 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Τιμή Χονδρικής"
+                android:text="Αγορές"
                 android:textColor="@color/colorAccent" />
 
-           <!-- <TextView
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="#000" />
+            <!-- <TextView
+                 android:layout_width="2dp"
+                 android:layout_height="match_parent"
+                 android:background="#000" />
 
-            <TextView
-                android:id="@+id/column_header6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="Αγ 23"
-                android:textColor="@color/colorAccent" />
+             <TextView
+                 android:id="@+id/column_header6"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="10"
+                 android:gravity="center"
+                 android:singleLine="true"
+                 android:text="Αγ 23"
+                 android:textColor="@color/colorAccent" />
 
-            <TextView
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="#000" />
+             <TextView
+                 android:layout_width="2dp"
+                 android:layout_height="match_parent"
+                 android:background="#000" />
 
-            <TextView
-                android:id="@+id/column_header7"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="10"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="Πωλ 23"
-                android:textColor="@color/colorAccent" />-->
+             <TextView
+                 android:id="@+id/column_header7"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="10"
+                 android:gravity="center"
+                 android:singleLine="true"
+                 android:text="Πωλ 23"
+                 android:textColor="@color/colorAccent" />-->
 
             <TextView
                 android:layout_width="2dp"
@@ -218,7 +233,7 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Αγ"
+                android:text="Παραγγελίες"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -234,7 +249,7 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Παραγγελίες"
+                android:text="Πωλήσεις"
                 android:textColor="@color/colorAccent" />
 
             <TextView
@@ -249,7 +264,7 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Πωλ"
+                android:text="Κεντρικό"
                 android:textColor="@color/colorAccent" />
 
 
@@ -266,9 +281,36 @@
                 android:layout_weight="10"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="Υπόλοιπο"
+                android:text="Τιμή Αγοράς"
                 android:textColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
 
+            <TextView
+                android:id="@+id/column_header17"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Νόμισμα"
+                android:textColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/column_header16"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Σχόλια"
+                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
         <ProgressBar
@@ -282,9 +324,111 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dynamicRecyclerView"
             android:layout_below="@+id/llHeaders"
+            android:layout_above="@+id/llfooter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="25dp"
+            android:id="@+id/llfooter"
+            android:background="@color/colorPrimary"
+            android:weightSum="210"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/footer_header"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="120"
+                android:gravity="left"
+                android:singleLine="true"
+                android:text=" Σύνολα"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/tAp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/tAg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+            <TextView
+                android:id="@+id/tPar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+            <TextView
+                android:id="@+id/tPwl"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+            <TextView
+                android:id="@+id/tKent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#000" />
+
+
+        </LinearLayout>
     </RelativeLayout>
 
 

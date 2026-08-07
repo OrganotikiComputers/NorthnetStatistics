@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/linLayout"
+        android:weightSum="210"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView_image"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="10"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/zoomIn"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logoo" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/page"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="30"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/katigoria1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="20"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/timi_xondrikis"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="40"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/apografi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/agores"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/paraggelies"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+
+
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/pwliseis"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/kentriko"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/timi_agoras"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/nomisma"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:fillViewport="true"
+            android:layout_weight="20"
+            android:layout_gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/sxolia"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:maxLines="1"/>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF" />
+</LinearLayout>

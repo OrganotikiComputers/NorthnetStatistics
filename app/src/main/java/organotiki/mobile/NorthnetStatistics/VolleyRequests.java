@@ -151,9 +151,9 @@ public class VolleyRequests {
                         String[] mParts = gVar.getVerNum().split("\\.");
                         if (sParts[1].equals(mParts[0]) && sParts[2].equals(mParts[1]) && sParts[3].equals(mParts[2])) {
                             if (sParts[4].equals(mParts[3])) {
-                                object.put("Message", "H συσκευή είναι έτοιμη για χρήση.");
+                                object.put("Message", "H συσκευή είναι έτοιμη για χρήση.\nΠαρακαλώ περιμένετε...");
                                 comm.respondVolleyRequestFinished(0, object);
-                                FillBackOfficeCombobox(mContext);
+                                FillBackOfficeCombobox(mContext,"Z_VW_org_tablet_prom2");
                                 /*if (mContext instanceof Sync) {
                                     sendVolleyRequest("MobStoreService/GetMobDocParDev?DevID=" + android.provider.Settings.Secure.getString(mContext.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID), "");
                                 }*/
@@ -163,7 +163,7 @@ public class VolleyRequests {
                                 if (mContext instanceof Sync) {
                                     //sendVolleyRequest("MobStoreService/GetMobItem", "0");
                                     //sendVolleyRequest("MobStoreService/GetMobUser", "0");
-                                    FillBackOfficeCombobox(mContext);
+                                    FillBackOfficeCombobox(mContext,"Z_VW_org_tablet_prom2");
                                 }
                             }
                         } else {
@@ -173,7 +173,7 @@ public class VolleyRequests {
                             if (mContext instanceof Sync) {
                                 //sendVolleyRequest("MobStoreService/GetMobItem", "0");
                                // sendVolleyRequest("MobStoreService/GetMobUser", "0");
-                                FillBackOfficeCombobox(mContext);
+                                FillBackOfficeCombobox(mContext,"Z_VW_org_tablet_prom2");
                             }
                         }
                     } else {
@@ -272,7 +272,7 @@ public class VolleyRequests {
                                             AllImageDownload();
                                         }else{
                                             comm.respondVolleyRequestFinished(0, jsonObject);
-                                            FillBackOfficeCombobox(mContext);
+                                            FillBackOfficeCombobox(mContext,"Z_VW_org_tablet_prom2");
                                         }
                                     } catch (Exception ex) {
                                         Log.e("asdfg", ex.getMessage(), ex);
@@ -853,20 +853,20 @@ public class VolleyRequests {
         }
     }
 
-    void FillBackOfficeCombobox(Context context) throws UnsupportedEncodingException {
+    void FillBackOfficeCombobox(Context context,String tablename) throws UnsupportedEncodingException {
         mContext = context;
         comm = (Communicator) mContext;
         HashMap<String, String> params = new HashMap<>();
         String columns = URLEncoder.encode("*", "UTF-8");  // results in "%2A"
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = (isLocalIPReachable() ? gVar.getLocalIP() : gVar.getOnlineIP()) + "MobStoreService/FillBackOfficeCombobox?Columns=*&Table=(SELECT * FROM Z_VW_org_tablet_prom2) t"; ///den douleve xwris emfolevmeno select,min rwtas giati,rwta tin oracle tou karagianni
+        String url = (isLocalIPReachable() ? gVar.getLocalIP() : gVar.getOnlineIP()) + "MobStoreService/FillBackOfficeCombobox?Columns=*&Table=(SELECT * FROM "+tablename+" ) t"; ///den douleve xwris emfolevmeno select,min rwtas giati,rwta tin oracle tou karagianni
         Log.d("asdfg", url + params.toString());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
                         String xml = response.getString("FillBackOfficeComboboxResult");
-                        parseAndSaveXML(xml,"z_org_tablet_prom2");
+                        parseAndSaveXML(xml,tablename);
                     } catch (JSONException e) {
                         Log.e("Volley", "JSON parsing error", e);
                     }
@@ -980,13 +980,23 @@ public class VolleyRequests {
                     //comm.respondVolleyRequestFinished(0, jsonObject);
                     /*comm.respondVolleyRequestFinished(0, jsonObject);
                     getLogo();*/
-                     if(((Sync) mContext).SyncImages()){
-                        comm.respondVolleyRequestFinished(0, jsonObject);
-                        AllImageDownload();
+                    if(tablename.equals("Z_VW_org_tablet_prom2")){
+                        try {
+                            FillBackOfficeCombobox(mContext,"z_vw_org_tablet_bi1");
+                        } catch (UnsupportedEncodingException e) {
+
+                        }
                     }else{
-                        comm.respondVolleyRequestFinished(0, jsonObject);
-                        getLogo();
+                        if(((Sync) mContext).SyncImages()){
+                            comm.respondVolleyRequestFinished(0, jsonObject);
+                            AllImageDownload();
+                        }else{
+                            comm.respondVolleyRequestFinished(0, jsonObject);
+                            getLogo();
+                        }
                     }
+
+
                 }
 
                 @Override
@@ -1034,10 +1044,31 @@ public class VolleyRequests {
 
                                 if (existing == null) {
                                     obj = realm.createObject(DynamicRealmObject.class, idValue);
+                                    obj.setFields(fields);
                                 } else {
                                     obj = existing;
+
+                                    RealmList<KeyValue> existingFields = obj.getFields();
+
+                                    for (KeyValue newField : fields) {
+                                        boolean found = false;
+
+                                        for (KeyValue oldField : existingFields) {
+                                            if (oldField.getKey().equals(newField.getKey())) {
+                                                oldField.setValue(newField.getValue()); // update υπάρχοντος πεδίου
+                                                found = true;
+                                                break;
+                                            }
+                                        }
+
+                                        if (!found) {
+                                            KeyValue kv = realm.createObject(KeyValue.class);
+                                            kv.setKey(newField.getKey());
+                                            kv.setValue(newField.getValue());
+                                            existingFields.add(kv);
+                                        }
+                                    }
                                 }
-                                obj.setFields(fields);
                             }
 
                             inTable = false;

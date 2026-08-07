@@ -72,7 +72,7 @@ public class SplashScreen extends AppCompatActivity {
             Log.d("asdfg", str + " parts: " + l);
             realm = Realm.getDefaultInstance();
 
-            final String versionNumber = "1.1.1.3";
+            final String versionNumber = "1.1.1.4";
 
             realm.executeTransactionAsync(new Realm.Transaction() {
                 @Override

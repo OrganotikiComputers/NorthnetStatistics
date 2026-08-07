@@ -86,6 +86,42 @@
                         android:textColor="@color/colorPrimaryDark" />
 
                     <Button
+                        android:id="@+id/button_statsBI"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:textSize="14sp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/round_corners"
+                        android:baselineAligned="false"
+                        android:drawableStart="@drawable/baseline_bar_chart_black_48dp"
+                        android:textAllCaps="false"
+                        android:padding="10dp"
+                        android:text="Στατιστικά BI"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LL_settings"
+                    android:id="@+id/LL_settings2"
+                    android:weightSum="10"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/groupbox"
+                    >
+
+                    <Button
 
                         android:id="@+id/button_sync"
                         android:layout_width="0dp"
@@ -106,8 +142,8 @@
 
 
 
-                </LinearLayout>
 
+                </LinearLayout>
 
 
             </RelativeLayout>

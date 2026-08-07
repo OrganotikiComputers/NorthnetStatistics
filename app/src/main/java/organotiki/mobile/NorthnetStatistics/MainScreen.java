@@ -49,7 +49,7 @@ import organotiki.mobile.NorthnetStatistics.objects.GlobalVar;
 import organotiki.mobile.NorthnetStatistics.objects.User;
 
 public class MainScreen extends AppCompatActivity implements View.OnClickListener, Communicator {
-    Button sync,offlinestats;
+    Button sync,offlinestats,statsbi;
     Realm realm;
     GlobalVar gVar;
     TextView txvUser, txvVersion;
@@ -143,6 +143,10 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
             offlinestats.setOnClickListener(this);
             offlinestats.setTransformationMethod(null);
 
+            statsbi = findViewById(R.id.button_statsBI);
+            statsbi.setOnClickListener(this);
+            statsbi.setTransformationMethod(null);
+
             try{
                 Bitmap[] RetVal = new Bitmap[0];
                 File dir = new File(Environment.getExternalStorageDirectory().getPath() + "/NorthnetStatistics/Images/");
@@ -203,6 +207,14 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
             case R.id.button_offlinestats:
                 try {
                     intent = new Intent(MainScreen.this, StatsKarfwta.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("asdfg", e.getMessage(), e);
+                }
+                break;
+            case R.id.button_statsBI:
+                try {
+                    intent = new Intent(MainScreen.this, StatsBI.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.e("asdfg", e.getMessage(), e);

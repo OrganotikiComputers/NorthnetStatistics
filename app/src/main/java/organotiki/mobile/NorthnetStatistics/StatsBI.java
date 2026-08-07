@@ -1,17 +1,13 @@
 package organotiki.mobile.NorthnetStatistics;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,20 +45,21 @@ import io.realm.RealmResults;
 import organotiki.mobile.NorthnetStatistics.objects.DynamicRealmObject;
 import organotiki.mobile.NorthnetStatistics.objects.KeyValue;
 
-public class StatsKarfwta extends AppCompatActivity implements  Communicator{
+public class StatsBI extends AppCompatActivity implements  Communicator{
 
     private RecyclerView recyclerView;
     private DynamicRealmAdapter adapter;
     ProgressBar progressBar;
-    private RecyclerViewKarfwta recyclerViewKarfwta;
-   // EditText search;
-   // Button searchItem;
+    private RecyclerViewBI recyclerViewBI;
+    // EditText search;
+    // Button searchItem;
     private Realm realm;
     private List<String> keys;
     ImageView MenuShowFilters;
     LinearLayout fFilters;
-    private Spinner spinnerSuppliers, spinnerCountries, spinnerCategories, spinnerOrderBy , spinnerPages1,spinnerPages2;
+    private Spinner spinnerCategories1, spinnerCategories2, spinnerCategories3, spinnerOrderBy , spinnerPages1,spinnerPages2;
     private EditText editTextCode, editTextDescription;
+    private TextView totalAp, totalAg,totalPar,totalPwl,totalKent;
     private CheckBox descending;
     private Button buttonSearch,buttonclearfilters;
 
@@ -71,7 +68,7 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         super.onCreate(savedInstanceState);
 
         // Set layout
-        setContentView(R.layout.activity_stats_karfwta);
+        setContentView(R.layout.activity_stats_bi);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         // Init Realm
         Realm.init(this);
@@ -108,12 +105,21 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
     }
 
     private void initViews() {
-        spinnerSuppliers = findViewById(R.id.spinner_suppliers);
-        spinnerCountries = findViewById(R.id.spinner_countries);
-        spinnerCategories = findViewById(R.id.spinner_categories);
+        spinnerCategories1 = findViewById(R.id.spinner_categories1);
+        spinnerCategories2 = findViewById(R.id.spinner_categories2);
+        spinnerCategories3 = findViewById(R.id.spinner_categories3);
         spinnerPages1 = findViewById(R.id.spinner_pages1);
         spinnerPages2 = findViewById(R.id.spinner_pages2);
         spinnerOrderBy = findViewById(R.id.spinner_orderby);
+
+
+        totalAp = findViewById(R.id.tAp);
+        totalAg = findViewById(R.id.tAg);
+        totalPar = findViewById(R.id.tPar);
+        totalPwl = findViewById(R.id.tPwl);
+        totalKent = findViewById(R.id.tKent);
+
+
         editTextCode = findViewById(R.id.edittext_code);
 
         editTextCode.setOnEditorActionListener((v, actionId, event) -> {
@@ -145,9 +151,9 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         buttonclearfilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                spinnerCategories.setSelection(0);
-                spinnerCountries.setSelection(0);
-                spinnerSuppliers.setSelection(0);
+                spinnerCategories1.setSelection(0);
+                spinnerCategories2.setSelection(0);
+                spinnerCategories3.setSelection(0);
                 spinnerPages1.setSelection(0);
                 spinnerPages2.setSelection(0);
                 editTextCode.setText("");
@@ -158,81 +164,80 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
 
     private void populateSpinners() {
         // You can load these from Realm too
-        List<String> suppliers = new ArrayList<>();
-        List<String> countries = new ArrayList<>();
-        List<String> categories = new ArrayList<>();
+        List<String> categories1 = new ArrayList<>();
+        List<String> categories2 = new ArrayList<>();
+        List<String> categories3 = new ArrayList<>();
         List<String> pages1 = new ArrayList<>();
         List<String> pages2 = new ArrayList<>();
 
-        suppliers.add("");
-        countries.add("");
-        categories.add("");
+        categories1.add("");
+        categories2.add("");
+        categories3.add("");
         pages1.add("");
         pages2.add("");
 
         RealmResults<DynamicRealmObject> allObjects = realm.where(DynamicRealmObject.class).findAll();
-        HashSet<String> supplierSet = new HashSet<>();
-        HashSet<String> countrySet = new HashSet<>();
-        HashSet<String> categoriesSet = new HashSet<>();
+        HashSet<String> categories1Set = new HashSet<>();
+        HashSet<String> categories2Set = new HashSet<>();
+        HashSet<String> categories3Set = new HashSet<>();
         HashSet<String> pages1Set = new HashSet<>();
         HashSet<String> pages2Set = new HashSet<>();
         for (DynamicRealmObject obj : allObjects) {
             for (KeyValue kv : obj.getFields()) {
-                if ("SUPPLIER".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
-                    supplierSet.add(kv.getValue());
+                if ("ΚΑΤΗΓ".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+                    categories1Set.add(kv.getValue());
                 }
-                else if ("COUNTRY".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
-                    countrySet.add(kv.getValue());
+                else if ("ΚΑΤΗΓ_2".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+                    categories2Set.add(kv.getValue());
                 }
-                else if ("CATEGORY".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
-                    categoriesSet.add(kv.getValue());
+                else if ("ΚΑΤΗΓ_3".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+                    categories3Set.add(kv.getValue());
                 }
-                else if ("PAGE_PROSPECT".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
+                else if ("ΣΕΛ".equalsIgnoreCase(kv.getKey()) && kv.getValue() != null) {
                     pages1Set.add(kv.getValue());
                     pages2Set.add(kv.getValue());
                 }
             }
         }
-        List<String> sortedSuppliers = new ArrayList<>(supplierSet);
-        List<String> sortedCountries = new ArrayList<>(countrySet);
-        List<String> sortedCategories = new ArrayList<>(categoriesSet);
+        List<String> sortedCategories1 = new ArrayList<>(categories1Set);
+        List<String> sortedCategories2 = new ArrayList<>(categories2Set);
+        List<String> sortedCategories3 = new ArrayList<>(categories3Set);
         List<String> sortedPages1 = new ArrayList<>(pages1Set);
         List<String> sortedPages2 = new ArrayList<>(pages2Set);
 
 
-        Collections.sort(sortedSuppliers, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedCountries, String.CASE_INSENSITIVE_ORDER);
-        Collections.sort(sortedCategories, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedCategories1, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedCategories2, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(sortedCategories3, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedPages1, String.CASE_INSENSITIVE_ORDER);
         Collections.sort(sortedPages2, String.CASE_INSENSITIVE_ORDER);
 
-        suppliers.addAll(sortedSuppliers);
-        countries.addAll(sortedCountries);
-        categories.addAll(sortedCategories);
+        categories1.addAll(sortedCategories1);
+        categories2.addAll(sortedCategories2);
+        categories3.addAll(sortedCategories3);
         pages1.addAll(sortedPages1);
         pages2.addAll(sortedPages2);
 
 
         List<String> orderBy = new ArrayList<>();
         orderBy.add("Σελίδα");
+        orderBy.add("Κατηγορία");
         orderBy.add("Κωδικό");
+        orderBy.add("Τιμή Χονδρικής");
         orderBy.add("Περιγραφή");
-        orderBy.add("Προμηθευτή");
-        //orderBy.add("Χώρα");
-        //orderBy.add("Κατηγορία");
+        orderBy.add("Απογραφή");
+        orderBy.add("Αγορές");
+        orderBy.add("Παραγγελίες");
+        orderBy.add("Πωλήσεις");
+        orderBy.add("Κεντρικό");
         orderBy.add("Τιμή αγοράς");
         orderBy.add("Νόμισμα");
-        orderBy.add("Τιμή Χονδρικής");
-        //orderBy.add("Αγορές 23");
-        //orderBy.add("Πωλήσεις 23");
-        orderBy.add("Αγορές 25");
-        orderBy.add("Πωλήσεις 25");
-        orderBy.add("Παραγγελίες");
-        orderBy.add("Υπόλοιπο");
+        orderBy.add("Σχόλια");
 
-        spinnerSuppliers.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, suppliers));
-        spinnerCountries.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countries));
-        spinnerCategories.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories));
+
+        spinnerCategories1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories1));
+        spinnerCategories2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories2));
+        spinnerCategories3.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categories3));
         spinnerPages1.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages1));
         spinnerPages2.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pages2));
         spinnerOrderBy.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, orderBy));
@@ -242,14 +247,6 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
     private void search(){
 
 
-  /*      if(codeInput.length()==1 || codeInput.length()==2){
-            Toast.makeText(StatsKarfwta.this,"Συμπληρώστε τουλάχιστον 3 χαρακτήρες στο πεδίο Κωδικό αν θέλετε να φιλτράρετε με αυτό!",Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(descriptionInput.length()==1 || descriptionInput.length()==2){
-            Toast.makeText(StatsKarfwta.this,"Συμπληρώστε τουλάχιστον 3 χαρακτήρες στο πεδίο Περιγραφή αν θέλετε να φιλτράρετε με αυτό!",Toast.LENGTH_LONG).show();
-            return;
-        }*/
         progressBar.setVisibility(View.VISIBLE);
         new Thread(() -> {
             Realm backgroundRealm = Realm.getDefaultInstance(); // <-- Νέο instance στο νέο thread
@@ -257,9 +254,9 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
             try{
 
 
-                String selectedSupplier = spinnerSuppliers.getSelectedItem().toString();
-                String selectedCountry = spinnerCountries.getSelectedItem().toString();
-                String selectedCategory = spinnerCategories.getSelectedItem().toString();
+                String selectedCategory1 = spinnerCategories1.getSelectedItem().toString();
+                String selectedCategory2 = spinnerCategories2.getSelectedItem().toString();
+                String selectedCategory3 = spinnerCategories3.getSelectedItem().toString();
                 String selectedPage1 = spinnerPages1.getSelectedItem().toString();
                 String selectedPage2 = spinnerPages2.getSelectedItem().toString();
                 String selectedOrder = spinnerOrderBy.getSelectedItem().toString();
@@ -267,30 +264,112 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                 String descriptionInput = editTextDescription.getText().toString().trim();
 
                 RealmQuery<DynamicRealmObject> query = backgroundRealm.where(DynamicRealmObject.class);
-
                 if (TextUtils.isEmpty(codeInput)){
-                    query = query.equalTo("fields.key", "CODE", Case.INSENSITIVE);
+                    query = query.equalTo("fields.key", "ΚΩΔ");
                 }
 
-                query = addEqualsFilter(query, "SUPPLIER", selectedSupplier);
-                query = addEqualsFilter(query, "COUNTRY", selectedCountry);
-                query = addEqualsFilter(query, "CATEGORY", selectedCategory);
+
+                if (!TextUtils.isEmpty(selectedCategory1)) {
+
+                    query = query.beginGroup()
+                            .beginGroup()
+                            .equalTo("fields.key", "ΚΑΤΗΓ")
+                            .and()
+                            .equalTo("fields.value", selectedCategory1, Case.INSENSITIVE)
+                            .endGroup();
+                    if(TextUtils.isEmpty(selectedCategory2))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ_2")
+                                .and()
+                                .equalTo("fields.value", selectedCategory1, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    if(TextUtils.isEmpty(selectedCategory3))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ_3")
+                                .and()
+                                .equalTo("fields.value", selectedCategory1, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    query = query.endGroup();
+                }
+                if (!TextUtils.isEmpty(selectedCategory2)) {
+
+                    query = query.beginGroup()
+                            .beginGroup()
+                            .equalTo("fields.key", "ΚΑΤΗΓ_2")
+                            .and()
+                            .equalTo("fields.value", selectedCategory2, Case.INSENSITIVE)
+                            .endGroup();
+                    if(TextUtils.isEmpty(selectedCategory1))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ")
+                                .and()
+                                .equalTo("fields.value", selectedCategory2, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    if(TextUtils.isEmpty(selectedCategory3))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ_3")
+                                .and()
+                                .equalTo("fields.value", selectedCategory2, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    query = query.endGroup();
+                }
+                if (!TextUtils.isEmpty(selectedCategory3)) {
+
+                    query = query.beginGroup()
+                            .beginGroup()
+                            .equalTo("fields.key", "ΚΑΤΗΓ_3")
+                            .and()
+                            .equalTo("fields.value", selectedCategory3, Case.INSENSITIVE)
+                            .endGroup();
+                    if(TextUtils.isEmpty(selectedCategory1))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ")
+                                .and()
+                                .equalTo("fields.value", selectedCategory3, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    if(TextUtils.isEmpty(selectedCategory2))
+                    {
+                        query = query.or()
+                                .beginGroup()
+                                .equalTo("fields.key", "ΚΑΤΗΓ_2")
+                                .and()
+                                .equalTo("fields.value", selectedCategory3, Case.INSENSITIVE)
+                                .endGroup();
+                    }
+                    query = query.endGroup();
+                }
+
 
                 RealmResults<DynamicRealmObject> results = query.findAll();
                 List<DynamicRealmObject> resultList = backgroundRealm.copyFromRealm(results);
                 if (!TextUtils.isEmpty(codeInput)) {
-                    resultList = filterByFieldContains(resultList, "CODE", codeInput.toUpperCase());
+                    resultList = filterByFieldContains(resultList, "ΚΩΔ", codeInput.toUpperCase());
                 }
                 if (!TextUtils.isEmpty(descriptionInput)) {
-                    resultList = filterByFieldContains(resultList, "DESCRIPTION", descriptionInput.toUpperCase());
+                    resultList = filterByFieldContains(resultList, "ΠΕΡΙΓΡΑΦΗ", descriptionInput.toUpperCase());
                 }
 
                 if(!TextUtils.isEmpty(selectedPage1)){
-                    resultList = filterByFieldGreater(resultList, "PAGE_PROSPECT", selectedPage1);
+                    resultList = filterByFieldGreater(resultList, "ΣΕΛ", selectedPage1);
                 }
 
                 if(!TextUtils.isEmpty(selectedPage2)){
-                    resultList = filterByFieldLower(resultList, "PAGE_PROSPECT", selectedPage2);
+                    resultList = filterByFieldLower(resultList, "ΣΕΛ", selectedPage2);
                 }
 
                 String test=query.getDescription();
@@ -299,33 +378,30 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
 
                 String selectedOrderID;
                 if(!TextUtils.isEmpty(selectedOrder)){
-
-
-                    if(selectedOrder.equals("Κωδικό")) selectedOrderID="CODE";
-                    else if(selectedOrder.equals("Περιγραφή")) selectedOrderID="DESCRIPTION";
-                    else if(selectedOrder.equals("Προμηθευτή")) selectedOrderID="SUPPLIER";
-                    //else if(selectedOrder.equals("Χώρα")) selectedOrderID="COUNTRY";
-                    //else if(selectedOrder.equals("Κατηγορία")) selectedOrderID="CATEGORY";
-                    else if(selectedOrder.equals("Τιμή αγοράς")) selectedOrderID="TIMI_AGORAS";
-                    else if(selectedOrder.equals("Νόμισμα")) selectedOrderID="NOMISMA";
-                    else if(selectedOrder.equals("Σελίδα")) selectedOrderID="PAGE_PROSPECT";
-                    else if(selectedOrder.equals("Τιμή Χονδρικής")) selectedOrderID="TIMI_XONDRIKIS";
-                   //else if(selectedOrder.equals("Αγορές 23")) selectedOrderID="POSOTITA_AGORAS_23";
-                    //else if(selectedOrder.equals("Πωλήσεις 23")) selectedOrderID="POSOTITA_PWLISEWN_23";
-                    else if(selectedOrder.equals("Αγορές 25")) selectedOrderID="POSOTITA_AGORAS_24";
-                    else if(selectedOrder.equals("Πωλήσεις 25")) selectedOrderID="POSOTITA_PWLISEWN_24";
-                    else if(selectedOrder.equals("Παραγγελίες")) selectedOrderID="PARAGGELIES";
-                    else if(selectedOrder.equals("Υπόλοιπο"))  selectedOrderID="YPOLOIPO";
+                    if(selectedOrder.equals("Κωδικό")) selectedOrderID="ΚΩΔ";
+                    else if(selectedOrder.equals("Περιγραφή")) selectedOrderID="ΠΕΡΙΓΡΑΦΗ";
+                    else if(selectedOrder.equals("Σελίδα")) selectedOrderID="ΣΕΛ";
+                    else if(selectedOrder.equals("Κατηγορία")) selectedOrderID="ΚΑΤΗΓ";
+                    else if(selectedOrder.equals("Τιμή Χονδρικής")) selectedOrderID="TX";
+                    else if(selectedOrder.equals("Απογραφή")) selectedOrderID="ΑΠΟΓ";
+                    else if(selectedOrder.equals("Αγορές")) selectedOrderID="ΑΓΟΡ";
+                    else if(selectedOrder.equals("Παραγγελίες")) selectedOrderID="ΠΑΡ";
+                    else if(selectedOrder.equals("Πωλήσεις")) selectedOrderID="ΠΩΛ";
+                    else if(selectedOrder.equals("Κεντρικό")) selectedOrderID="ΚΕΝ";
+                    else if(selectedOrder.equals("Τιμή αγοράς"))  selectedOrderID="ΤΑ";
+                    else if(selectedOrder.equals("Νόμισμα"))  selectedOrderID="ΞΝ";
+                    else if(selectedOrder.equals("Σχόλια"))  selectedOrderID="ΣΧ";
                     else {
-                        selectedOrderID = "PAGE_PROSPECT";
+                        selectedOrderID = "ΣΕΛ";
                     }
 
                     Set<String> numericFields = new HashSet<>(Arrays.asList(
-                            "TIMI_AGORAS","TIMI_XONDRIKIS", "POSOTITA_AGORAS_23", "POSOTITA_PWLISEWN_23",
-                            "POSOTITA_AGORAS_24", "POSOTITA_PWLISEWN_24", "PARAGGELIES", "YPOLOIPO"
+                            "TX","ΑΠΟΓ", "ΑΓΟΡ", "ΠΑΡ",
+                            "ΠΩΛ", "ΚΕΝ", "ΤΑ"
                     ));
 
                     boolean isDescending = descending.isChecked();
+
 
                     if (numericFields.contains(selectedOrderID)) {
                         // Numeric comparison
@@ -342,12 +418,40 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
                             return isDescending ? v2.compareToIgnoreCase(v1) : v1.compareToIgnoreCase(v2);
                         });
                     }
+
                 }
+                BigDecimal Apog = BigDecimal.ZERO;
+                BigDecimal Agor = BigDecimal.ZERO;
+                BigDecimal Par = BigDecimal.ZERO;
+                BigDecimal Pol = BigDecimal.ZERO;
+                BigDecimal Ken = BigDecimal.ZERO;
+
+                for (DynamicRealmObject obj : resultList) {
+
+                    Apog = Apog.add(parseDecimal(getField(obj, "ΑΠΟΓ")));
+                    Agor = Agor.add(parseDecimal(getField(obj, "ΑΓΟΡ")));
+                    Par = Par.add(parseDecimal(getField(obj, "ΠΑΡ")));
+                    Pol = Pol.add(parseDecimal(getField(obj, "ΠΩΛ")));
+                    Ken = Ken.add(parseDecimal(getField(obj, "ΚΕΝ")));
+                }
+                final BigDecimal fTotalApog = Apog;
+                final BigDecimal fTotalAgor = Agor;
+                final BigDecimal fTotalPar =  Par;
+                final BigDecimal fTotalPol =  Pol;
+                final BigDecimal fTotalKen =  Ken;
+
                 List<DynamicRealmObject> finalResultList = resultList;
                 runOnUiThread(() -> {
-                    recyclerView.setLayoutManager(new LinearLayoutManager(StatsKarfwta.this));
-                    recyclerViewKarfwta = new RecyclerViewKarfwta(StatsKarfwta.this, StatsKarfwta.this, finalResultList, imageCache);
-                    recyclerView.setAdapter(recyclerViewKarfwta);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(StatsBI.this));
+                    recyclerViewBI = new RecyclerViewBI(StatsBI.this, StatsBI.this, finalResultList, imageCache);
+                    recyclerView.setAdapter(recyclerViewBI);
+
+                    totalAp.setText(fTotalApog.toString());
+                    totalAg.setText(fTotalAgor.toString());
+                    totalPwl.setText(fTotalPol.toString());
+                    totalPar.setText(fTotalPar.toString());
+                    totalKent.setText(fTotalKen.toString());
+
                     progressBar.setVisibility(View.GONE);
                 });
 
@@ -361,7 +465,7 @@ public class StatsKarfwta extends AppCompatActivity implements  Communicator{
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               search();
+                search();
             }
         });
     }

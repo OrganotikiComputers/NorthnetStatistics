@@ -53,6 +53,21 @@
 
         <Button
 
+            android:id="@+id/button_statsBI"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/round_corners"
+            android:baselineAligned="false"
+            android:drawableTop="@drawable/baseline_bar_chart_black_48dp"
+            android:padding="10dp"
+            android:layout_toEndOf="@+id/button_offlinestats"
+            android:text="Στατιστικά BI"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <Button
+
             android:id="@+id/button_sync"
             android:layout_width="150dp"
             android:layout_height="120dp"
@@ -61,7 +76,7 @@
             android:baselineAligned="false"
             android:drawableTop="@drawable/ic_sync_black_48dp"
             android:padding="10dp"
-            android:layout_toEndOf="@+id/button_offlinestats"
+            android:layout_toEndOf="@+id/button_statsBI"
             android:text="@string/sync"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark" />

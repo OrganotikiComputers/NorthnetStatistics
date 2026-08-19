@@ -86,44 +86,83 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
-        <TextView android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Από Σελίδα"
-            android:textStyle="bold"
-            android:paddingTop="8dp"/>
-      <!--  <Spinner
-            android:id="@+id/spinner_pages1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
+            android:layout_height="match_parent"
 
-        <EditText
-            android:id="@+id/edittext_pages1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="number"
-            android:imeOptions="actionSearch"
-            android:hint="Από Σελίδα" />
+            android:weightSum="10">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:orientation="vertical"
+                >
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Από Σελίδα"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"/>
+                <!--  <Spinner
+                      android:id="@+id/spinner_pages1"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content" />-->
 
-        <TextView android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Εώς Σελίδα"
-            android:textStyle="bold"
-            android:paddingTop="8dp"/>
-       <!-- <Spinner
-            android:id="@+id/spinner_pages2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
+                <EditText
+                    android:id="@+id/edittext_pages1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:imeOptions="actionSearch"
+                    android:hint="Από Σελίδα" />
 
-        <EditText
-            android:id="@+id/edittext_pages2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="number"
-            android:imeOptions="actionSearch"
-            android:hint="Εώς Σελίδα" />
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Εώς Σελίδα"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"/>
+                <!-- <Spinner
+                     android:id="@+id/spinner_pages2"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content" />-->
+
+                <EditText
+                    android:id="@+id/edittext_pages2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:imeOptions="actionSearch"
+                    android:hint="Εώς Σελίδα" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/button_previous"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:textAllCaps="false"
+                    android:textSize="25dp"
+                    android:text="↑" />
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:textSize="25dp"
+                    android:text="↓" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
 
 
 

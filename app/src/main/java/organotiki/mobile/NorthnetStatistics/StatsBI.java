@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -62,7 +63,7 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
     private TextView totalAp, totalAg,totalPar,totalPwl,totalKent;
     private CheckBox descending;
     private Button buttonSearch,buttonclearfilters;
-
+    private Button buttonNext,buttonPrevious;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +173,9 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
         buttonSearch = findViewById(R.id.button_search);
         buttonclearfilters=findViewById(R.id.clear_filter);
 
+        buttonNext = findViewById(R.id.button_next);
+        buttonPrevious = findViewById(R.id.button_previous);
+
         buttonclearfilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +188,35 @@ public class StatsBI extends AppCompatActivity implements  Communicator{
                 editTextDescription.setText("");
                 editTextPages1.setText("");
                 editTextPages2.setText("");
+            }
+        });
+
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!TextUtils.isEmpty(editTextPages1.getText().toString()) && !TextUtils.isEmpty(editTextPages2.getText().toString()) && editTextPages1.getText().toString().equals(editTextPages2.getText().toString())){
+                    Integer nextValue=Integer.parseInt(editTextPages1.getText().toString())+1;
+                    editTextPages1.setText(nextValue.toString());
+                    editTextPages2.setText(nextValue.toString());
+                    //search();
+                }else{
+                    Toast.makeText(StatsBI.this,"Συμπληρώστε ίδιο αριθμό στις σελίδες και μετά πατήστε το κουμπί!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        buttonPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!TextUtils.isEmpty(editTextPages1.getText().toString()) && !TextUtils.isEmpty(editTextPages2.getText().toString()) && editTextPages1.getText().toString().equals(editTextPages2.getText().toString())){
+                    Integer previousValue=Integer.parseInt(editTextPages1.getText().toString())-1;
+                    if(previousValue<0) previousValue=0;
+                    editTextPages1.setText(previousValue.toString());
+                    editTextPages2.setText(previousValue.toString());
+                    //search();
+                }else{
+                    Toast.makeText(StatsBI.this,"Συμπληρώστε ίδιο αριθμό στις σελίδες και μετά πατήστε το κουμπί!", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
